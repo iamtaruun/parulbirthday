@@ -293,14 +293,14 @@ $('#blow').addEventListener('click', async (e) => {
 /* ---------- 7. Screen 5: memories -------------------------- */
 /* Replace `src` with real photos in assets/images/ when available. */
 const MEMORIES = [
-  { cap: 'My favorite distraction, unfortunately. ❤️', src: 'assets/images/photo1.jpeg' },
-  { cap: 'This is the kind of picture I could look at for way too long',  src: 'assets/images/photo2.jpeg' },
-  { cap: 'Proof that my taste in girls is actually excellent.', src: 'assets/images/photo3.jpeg' },
-  { cap: 'How am I supposed to act normal after seeing this?',    src: 'assets/images/photo4.jpeg' },
-  { cap: 'Still my favorite face to look at.',           src: 'assets/images/photo5.jpeg' },
-  { cap: "If I had to choose again, I'd still choose you. ❤️", src: 'assets/images/photo6.jpeg' },
-  { cap: 'Madam Ji and her attitude 😌',     src: 'assets/images/photo7.jpeg' },
-  { cap: 'My Mirchi looking innocent for once. 🌶️😂',                     src: 'assets/images/photo8.jpeg' },
+  { cap: 'My favorite distraction, unfortunately. ❤️', src: 'photo1.jpeg' },
+  { cap: 'This is the kind of picture I could look at for way too long',  src: 'photo2.jpeg' },
+  { cap: 'Proof that my taste in girls is actually excellent.', src: 'photo3.jpeg' },
+  { cap: 'How am I supposed to act normal after seeing this?',    src: 'photo4.jpeg' },
+  { cap: 'Still my favorite face to look at.',           src: 'photo5.jpeg' },
+  { cap: "If I had to choose again, I'd still choose you. ❤️", src: 'photo6.jpeg' },
+  { cap: 'Madam Ji and her attitude 😌',     src: 'photo7.jpeg' },
+  { cap: 'My Mirchi looking innocent for once. 🌶️😂',                     src: 'photo8.jpeg' },
 ];
 const TRANS = ['in-slide', 'in-flip', 'in-fade', 'in-rot'];
 const TINTS = ['linear-gradient(140deg,#4A1820,#E8A7B8)','linear-gradient(140deg,#2a1d3a,#D8B36A)','linear-gradient(140deg,#1a2a2a,#E8A7B8)','linear-gradient(140deg,#3a2418,#f0d9a5)'];
