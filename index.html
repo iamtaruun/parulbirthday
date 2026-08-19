@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>For Madam Ji ❤️</title>
+<meta name="description" content="Happiest birthday my Girl." />
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<div class="fx" aria-hidden="true">
+  <div class="scanlines" id="scanlines"></div>
+  <div class="vignette"></div>
+  <canvas id="particles"></canvas>
+</div>
+
+<!-- floating music player -->
+<div id="player" class="player" hidden>
+  <button id="playBtn" class="pbtn" aria-label="Play music">▶</button>
+  <button id="muteBtn" class="pbtn" aria-label="Mute music">🔊</button>
+  <input id="vol" class="vol" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume" />
+</div>
+<audio id="music" loop preload="none" src="music.mp3"></audio>
+
+<main id="stage">
+
+<!-- 01 HACK INTRO -->
+<section class="scene term active" id="s-hack" data-mode="term">
+  <div class="term-box"><pre id="hackLog" class="log" aria-live="polite"></pre>
+  <div class="bar" id="hackBar" hidden><span></span></div></div>
+</section>
+
+<!-- 02 ENVELOPE -->
+<section class="scene term" id="s-envelope" data-mode="term">
+  <div class="center">
+    <button class="envelope" id="envelope" aria-label="Open the envelope">
+      <span class="env-flap"></span><span class="env-body"></span><span class="env-heart">❤</span>
+    </button>
+    <p class="clickme">CLICK ME</p>
+  </div>
+</section>
+
+<!-- 03 PASSWORD -->
+<section class="scene term" id="s-pass" data-mode="term">
+  <div class="term-box">
+    <pre id="passLog" class="log"></pre>
+    <form id="passForm" class="passform" hidden>
+      <label class="sr-only" for="passInput">Password</label>
+      <input id="passInput" inputmode="numeric" autocomplete="off" placeholder="••••••" maxlength="12" />
+      <button type="submit" class="tbtn">ENTER</button>
+    </form>
+    <p id="passMsg" class="passmsg" role="status"></p>
+    <button id="hintBtn" class="tbtn ghost" hidden>💡 Need a hint?</button>
+  </div>
+</section>
+
+<!-- 04 INTRO -->
+<section class="scene rom" id="s-intro" data-mode="rom">
+  <div class="center narrow">
+    <div class="cine" id="introCine"></div>
+    <button class="btn" id="startJourney" hidden>START THE JOURNEY ❤️</button>
+  </div>
+</section>
+
+<!-- 05 COUNTDOWN -->
+<section class="scene rom" id="s-count" data-mode="rom">
+  <div class="center narrow">
+    <h2 class="h2">🎂 The Countdown</h2>
+    <div class="cd" id="cd">
+      <div><b id="cdD">00</b><span>DAYS</span></div><i>:</i>
+      <div><b id="cdH">00</b><span>HOURS</span></div><i>:</i>
+      <div><b id="cdM">00</b><span>MINUTES</span></div><i>:</i>
+      <div><b id="cdS">00</b><span>SECONDS</span></div>
+    </div>
+    <p class="lead" id="cdText">Until Madam Ji's birthday 🎂</p>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 06 OUR STORY -->
+<section class="scene rom" id="s-story" data-mode="rom">
+  <div class="center narrow">
+    <h2 class="h2">OUR STORY</h2>
+    <p class="sub">A few things I still remember...</p>
+    <div class="timeline">
+      <div class="tl-item"><span class="dot"></span><b>School</b><p>Where it all quietly started.</p></div>
+      <div class="tl-item"><span class="dot"></span><b>9th &amp; 10th</b><p>I was in 9th. Madam Ji was in 10th. Senior energy, obviously.</p></div>
+      <div class="tl-item"><span class="dot"></span><b>21 December 2022</b><p>The day you texted first. I still count that as a win.</p></div>
+    </div>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 06a HANDSHAKE -->
+<section class="scene rom" id="s-hand" data-mode="rom">
+  <div class="center narrow">
+    <div class="handshake" aria-hidden="true"><span>🤝</span><i class="ring"></i></div>
+    <div class="cine" id="handCine"></div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 06b STAIRCASE -->
+<section class="scene rom" id="s-stairs" data-mode="rom">
+  <div class="center narrow">
+    <div class="stairs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="cine" id="stairCine"></div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 07 PICTURE WE DON'T HAVE -->
+<section class="scene rom" id="s-nopic" data-mode="rom">
+  <div class="center narrow">
+    <button class="polaroid blank" id="blankPola">
+      <span class="pola-img">🖼️</span>
+      <span class="pola-cap">CLICK TO SEE THE PICTURE</span>
+    </button>
+    <div class="cine" id="nopicCine"></div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 08 GALLERY -->
+<section class="scene rom" id="s-gallery" data-mode="rom">
+  <div class="wrap">
+    <h2 class="h2">The Wall of Madam Ji</h2>
+    <div class="wall" id="wall"></div>
+    <div class="cine" id="galCine"></div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 09 THEN / NOW -->
+<section class="scene rom" id="s-thennow" data-mode="rom">
+  <div class="center narrow">
+    <h2 class="h2">THEN 👶 &nbsp;/&nbsp; NOW ❤️</h2>
+    <div class="compare" id="compare">
+      <img class="cmp-a" id="imgNow" alt="Parul now" />
+      <div class="cmp-clip" id="cmpClip"><img id="imgChild" alt="Parul as a child" /></div>
+      <div class="cmp-handle" id="cmpHandle"><span>‹ ›</span></div>
+      <span class="cmp-lbl left">THEN 👶</span><span class="cmp-lbl right">NOW ❤️</span>
+    </div>
+    <input id="cmpRange" class="cmp-range" type="range" min="0" max="100" value="50" aria-label="Compare then and now" />
+    <div class="cine" id="tnCine"></div>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 10 THINGS I LOVE -->
+<section class="scene rom" id="s-reasons" data-mode="rom">
+  <div class="wrap">
+    <h2 class="h2">Things I Love About You</h2>
+    <p class="sub">Click one. Go on.</p>
+    <div class="cards" id="reasonCards"></div>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 11 NICKNAME MUSEUM -->
+<section class="scene rom" id="s-museum" data-mode="rom">
+  <div class="wrap">
+    <h2 class="h2">MADAM JI'S NICKNAME MUSEUM</h2>
+    <p class="sub">Exhibits are interactive. No touching the guard.</p>
+    <div class="cards" id="nickCards"></div>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 12 QUIZ E1 -->
+<section class="scene rom" id="s-e1" data-mode="rom">
+  <div class="wrap quizwrap">
+    <h2 class="h2">HOW WELL DO YOU REMEMBER US? ❤️</h2>
+    <div class="quiz" id="quizE1"></div>
+  </div>
+</section>
+
+<!-- 13 QUIZ E2 -->
+<section class="scene rom" id="s-e2" data-mode="rom">
+  <div class="wrap quizwrap">
+    <h2 class="h2">OKAY MADAM JI...</h2>
+    <p class="sub">Let's see how well you actually know me. 😂</p>
+    <div class="quiz" id="quizE2"></div>
+  </div>
+</section>
+
+<!-- 14 SCRATCH -->
+<section class="scene rom" id="s-scratch" data-mode="rom">
+  <div class="center narrow">
+    <h2 class="h2">YOU FOUND SOMETHING... 👀</h2>
+    <div class="scratchbox">
+      <div class="scratch-under" id="scratchUnder">🔓 SECRET UNLOCKED</div>
+      <canvas id="scratch" width="600" height="300" aria-label="Scratch card"></canvas>
+    </div>
+    <p class="sub">Scratch to reveal.</p>
+    <button class="btn" id="scratchSkip">Can't scratch? Tap here</button>
+  </div>
+</section>
+
+<!-- 16 BALLOONS -->
+<section class="scene rom" id="s-balloons" data-mode="rom">
+  <div class="wrap">
+    <h2 class="h2">MADAM JI'S ADVICE DEPARTMENT 🎈</h2>
+    <p class="sub">Pop the balloons. <span id="popCount">0</span>/10</p>
+    <div class="balloons" id="balloons"></div>
+    <div class="cine" id="balCine"></div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 17 MIRROR -->
+<section class="scene rom" id="s-mirror" data-mode="rom">
+  <div class="center narrow">
+    <h2 class="h2">Why do I choose you?</h2>
+    <button class="btn" id="mirrorBtn">CLICK TO FIND OUT</button>
+    <div class="mirror" id="mirror" hidden>
+      <div class="mirror-glass">
+        <video id="mirrorCam" playsinline autoplay muted></video>
+        <div class="cine" id="mirrorCine"></div>
+      </div>
+    </div>
+    <button class="btn next" hidden>Continue →</button>
+  </div>
+</section>
+
+<!-- 18 LETTER -->
+<section class="scene rom" id="s-letter" data-mode="rom">
+  <div class="wrap">
+    <h2 class="h2">One Last Thing...</h2>
+    <article class="letter" id="letter"></article>
+    <button class="btn next">Continue →</button>
+  </div>
+</section>
+
+<!-- 19 PENCIL -->
+<section class="scene rom" id="s-pencil" data-mode="rom">
+  <div class="center narrow">
+    <div class="cine" id="pencilCine"></div>
+    <div class="pencil-actions" hidden id="pencilActions">
+      <button class="btn ghost" id="micBtn">🎤 Say "Pencil"</button>
+      <button class="btn" id="saidBtn">I SAID PENCIL</button>
+      <p class="sub" id="micStatus"></p>
+    </div>
+  </div>
+</section>
+
+<!-- 20 DO YOU LOVE ME -->
+<section class="scene rom" id="s-love" data-mode="rom">
+  <div class="center narrow">
+    <div class="cine" id="loveCine"></div>
+    <div id="loveActions" hidden>
+      <h2 class="h1">DO YOU LOVE ME?</h2>
+      <p class="sub" id="loveMsg"></p>
+      <div class="row">
+        <button class="btn" id="yesBtn">❤️ YES</button>
+        <button class="btn ghost" id="noBtn">❌ NO</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 21 FINAL HACK -->
+<section class="scene term" id="s-final" data-mode="term">
+  <div class="term-box"><pre id="finalLog" class="log"></pre></div>
+  <div class="center finale" id="finaleText"></div>
+</section>
+
+<!-- 22 BIRTHDAY -->
+<section class="scene rom" id="s-bday" data-mode="rom">
+  <div class="slideshow" id="slideshow" aria-hidden="true"></div>
+  <div class="center narrow bday">
+    <h1 class="h1 glow">HAPPY BIRTHDAY, MADAM JI ❤️</h1>
+    <p class="lead">Thank you for being one of the most important people in my life.</p>
+    <p class="sign">From the person who somehow hacked your heart. 😂❤️</p>
+    <button class="btn ghost" id="replay">Replay the journey ↺</button>
+  </div>
+</section>
+
+</main>
+
+<!-- lightbox -->
+<div class="modal" id="lightbox" hidden>
+  <button class="modal-close" id="lbClose" aria-label="Close">✕</button>
+  <figure><img id="lbImg" alt="" /><figcaption id="lbCap"></figcaption></figure>
+</div>
+
+<!-- video modal -->
+<div class="modal" id="videoModal" hidden>
+  <button class="modal-close" id="vmClose" aria-label="Close">✕</button>
+  <div class="vm-inner">
+    <p class="h2">I HAVE SOMETHING FOR YOU...</p>
+    <video id="secretVideo" controls playsinline preload="none" src="secret-video.mp4"></video>
+    <p class="sub" id="vmNote"></p>
+    <button class="btn" id="vmNext" hidden>Okay... moving on. 😂</button>
+  </div>
+</div>
+
+<!-- generic popup -->
+<div class="modal" id="popup" hidden>
+  <div class="popup-inner">
+    <h2 class="h1" id="popTitle"></h2>
+    <p class="lead" id="popBody"></p>
+    <button class="btn" id="popBtn">CONTINUE →</button>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
