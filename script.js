@@ -221,7 +221,7 @@ $('#passForm').addEventListener('submit', async e => {
       '',
       '> Hey... I have to tell you something.',
       '> It\'s actually my phone password.',
-      { t: '> By the way 😂😂', cls: 'ok' }
+      { t: '>😂😂', cls: 'ok' }
     ], { pause: 1100 });
     await wait(T(1200));
     $('#s-pass').classList.add('glitch');
